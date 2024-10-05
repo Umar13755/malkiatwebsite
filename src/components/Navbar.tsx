@@ -17,7 +17,7 @@ export default function Navbar() {
             About Us
           </Link>
           <Link href="#" className="link">
-            Testimonials
+            Success Stories
           </Link>
         </div>
         <div className="p-4 lg:flex hidden">
