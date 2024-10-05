@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 :root {
   --background: #ffffff;
@@ -17,11 +19,59 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+
+@layer components {
+  .link {
+    @apply relative inline-block text-gray-400 hover:text-red-500 transition duration-300 ease-in-out;
+  }
+
+  .link::before {
+    @apply absolute bottom-0 left-1/2 h-[2px] w-0 bg-red-500 transition-all duration-300 ease-in-out;
+    content: "";
+    width: 0;
+    transform: translateX(-50%);
+  }
+
+  .link:hover::before {
+    @apply w-full;
+  }
+
+  .btn {
+    @apply bg-red-500 p-3 text-slate-200 rounded-md;
+  }
+
+  .heading2{
+    @apply text-4xl font-semibold
+  }
+  .paragraph{
+    @apply opacity-70
+  }
+
+  .btn {
+    @apply relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-white rounded hover:bg-white;
+  }
+  
+  .btn::before {
+    content: "";
+    @apply w-48 h-48 rounded bg-red-500 absolute bottom-0 left-0 -translate-x-full transition-all duration-500 ease-out;
+    transform: rotate(-40deg) translateY(100%);
+    margin-bottom: 2.25rem;
+    margin-left: 2.25rem;
+  }
+  
+  .btn:hover::before {
+    @apply group-hover:translate-x-0 group-hover:mb-32 group-hover:ml-0;
+  }
+  
+  .btn span {
+    @apply relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white;
   }
 }
