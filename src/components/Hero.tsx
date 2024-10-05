@@ -5,12 +5,12 @@ export default function Hero() {
   return (
     <div className="flex flex-col-reverse lg:flex-row p-5 justify-between mt-20 gap-12">
       {/* Left Section: Text Content */}
-      <div className="space-y-5 py-10 lg:py-20 lg:w-2/5">
+      <div className="space-y-10 py-10 lg:py-20 lg:w-2/5">
         <div>
-          <h2 className="heading2 text-center lg:text-left">
-            Unlock Global Opportunities with Expert Visa Consultancy
+          <h2 className="heading2 text-center lg:text-left ">
+            Unlock Global Opportunities with Expert <span className="text-red-500">Malkiat Consultant</span>
           </h2>
-          <p className="paragraph text-center lg:text-left">
+          <p className="paragraph text-center lg:text-left mt-1">
             From study visas to work permits, we offer tailored solutions for
             all your immigration needs. Let us guide you on your journey to
             success abroad!
