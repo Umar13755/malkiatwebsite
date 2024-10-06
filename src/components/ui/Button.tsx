@@ -1,8 +1,8 @@
 import React from "react";
 
 interface ButtonProps {
-  href: string; // URL to link to
-  text: string; // Text to display on the button
+  href: string; 
+  text: string; 
 }
 
 const Button: React.FC<ButtonProps> = ({ href, text }) => {

@@ -28,7 +28,7 @@ const Card: React.FC<ServiceCardProps> = ({
             {title}
           </h1>
           <p className="leading-relaxed mb-3 opacity-80">{description}</p>
-          <a href={linkHref} className="text-red-500 inline-flex items-center">
+          <a href={linkHref} className="text-red-500 inline-flex items-center hover:scale-110">
             {linkText}
             <svg
               className="w-4 h-4 ml-2"
