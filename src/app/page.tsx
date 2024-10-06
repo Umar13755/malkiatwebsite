@@ -4,7 +4,7 @@ import Services from "@/components/Services";
 
 export default function Home() {
   return (
-    <div className="mx-10 p-5">
+    <div className="lg:mx-10 p-5">
       <Navbar />
       <Hero/>
       <Services/>
