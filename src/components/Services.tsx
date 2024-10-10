@@ -3,7 +3,7 @@ import { NotebookIcon } from "lucide-react";
 export default function Services() {
   return (
     <>
-      <section className="backdrop-brightness-75 from-indigo-600 to-indigo-200">
+      <section>
         <div className="container px-5 py-24 mx-auto">
           <div className="flex justify-center gap-1 mb-4">
             <NotebookIcon size={25} className="my-[6px]" color="#ef4444" />

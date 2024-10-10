@@ -1,43 +1,93 @@
-"use client"
+"use client";
+
+import { useEffect, useRef } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 import CountUp from "react-countup";
 
-export default function SuccessStories() {
-  return (
-    <div className="py-24">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-          {/* Users */}
-          <div className="p-8 bg-slate-800 rounded-lg shadow-lg">
-            <h2 className="title-font font-bold text-5xl text-red-600 mb-2">
-              <CountUp start={0} end={500} duration={3} separator="," />
-            </h2>
-            <p className="leading-relaxed text-white">Client's Success</p>
-          </div>
-          
-          {/* Subscribes */}
-          <div className="p-8 bg-slate-800 rounded-lg shadow-lg">
-            <h2 className="title-font font-bold text-5xl text-red-600 mb-2">
-              <CountUp start={0} end={1800} duration={3} separator="," />
-            </h2>
-            <p className="leading-relaxed text-white">Subscribes</p>
-          </div>
-          
-          {/* Downloads */}
-          <div className="p-8 bg-slate-800 rounded-lg shadow-lg">
-            <h2 className="title-font font-bold text-5xl text-red-600 mb-2">
-              <CountUp start={0} end={35} duration={3} />
-            </h2>
-            <p className="leading-relaxed text-white">Downloads</p>
-          </div>
+const StatCard = ({
+  end,
+  suffix = "",
+  text,
+}: {
+  end: number;
+  suffix?: string;
+  text: string;
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+  const controls = useAnimation();
 
-          {/* Products */}
-          <div className="p-8 bg-slate-800 rounded-lg shadow-lg">
-            <h2 className="title-font font-bold text-5xl text-red-600 mb-2">
-              <CountUp start={0} end={99} duration={3} suffix="%"/>
-            </h2>
-            <p className="leading-relaxed text-white">Client Satisfaction</p>
-          </div>
-        </div>
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [isInView, controls]);
+
+  return (
+    <motion.div
+      ref={ref}
+      className="p-8 bg-white bg-opacity-10 backdrop-blur-md rounded-xl shadow-xl"
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      initial="hidden"
+      animate={controls}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.h2 className="title-font font-bold text-6xl text-red-500 mb-3">
+        {isInView && (
+          <CountUp
+            start={0}
+            end={end}
+            duration={2}
+            separator=","
+            suffix={suffix}
+          />
+        )}
+      </motion.h2>
+      <p className="text-lg font-medium text-white">{text}</p>
+    </motion.div>
+  );
+};
+
+export default function AnimatedSuccessStories() {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: false });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [isInView, controls]);
+
+  return (
+    <div className="relative py-24 overflow-hidden" ref={containerRef}>
+      <div className="container mx-auto px-4 relative z-10 bg-gradient-to-r backdrop-blur-[100px]">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+          }}
+          initial="hidden"
+          animate={controls}
+        >
+          <StatCard end={500} suffix="+" text="Client's Success" />
+          <StatCard end={250} suffix="+" text="Work Visa" />
+          <StatCard end={300} suffix="+" text="Student Visa" />
+          <StatCard end={99} suffix="%" text="Client Satisfaction" />
+        </motion.div>
       </div>
     </div>
   );

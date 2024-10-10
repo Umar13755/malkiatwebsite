@@ -15,7 +15,7 @@ const Card: React.FC<ServiceCardProps> = ({
 }) => {
   return (
     <div className="p-4 lg:w-1/3">
-      <div className="h-full bg-white bg-opacity-10 backdrop-blur-lg shadow-lg rounded-lg overflow-hidden relative">
+      <div className="h-full bg-[#ededed] bg-opacity-10 backdrop-blur-lg shadow-lg rounded-lg overflow-hidden relative">
         {/* Image */}
         <img
           src={imageSrc}
