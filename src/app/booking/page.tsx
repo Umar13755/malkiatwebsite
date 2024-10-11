@@ -132,13 +132,17 @@ export default function Booking() {
               />
             </div>
 
-            <div className="flex justify-center col-span-2 mt-4">
+            <div className="flex justify-center lg:col-span-2 mt-4">
               <button
-                className="p-3 bg-red-500 text-white"
+                className="sm:w-auto w-full relative inline-flex items-center justify-center px-6 py-3 overflow-hidden text-lg font-medium text-red-600 transition duration-300 ease-out border-2 border-red-600 rounded-lg shadow-md group hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
                 type="submit"
                 disabled={state.submitting}
               >
-                Submit
+                <span className="absolute left-0 block w-0 h-1 transition-all duration-300 ease-out bg-red-500 group-hover:w-full" />
+                <span className="absolute right-0 block w-0 h-1 transition-all duration-300 ease-out bg-red-500 group-hover:left-0 group-hover:w-full" />
+                <span className="relative">
+                  {state.submitting ? "Submitting..." : "Submit"}
+                </span>
               </button>
             </div>
           </form>
