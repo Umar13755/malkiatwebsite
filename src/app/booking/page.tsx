@@ -12,7 +12,6 @@ export default function Booking() {
     return <ConfirmPage />;
   }
 
-  
   const visaType = [
     { value: "Study Visa", label: "Study Visa" },
     { value: "Tourist Visa", label: "Tourist Visa" },
@@ -126,7 +125,6 @@ export default function Booking() {
                 className="sm:w-64 w-full relative inline-flex items-center justify-center px-6 py-2 overflow-hidden text-lg font-medium text-red-600 transition duration-300 ease-out border-2 border-red-600 rounded-lg shadow-md group hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
                 type="submit"
                 disabled={state.submitting}
-                onSubmit={handleSubmit}
               >
                 <span className="absolute left-0 block w-0 h-1 transition-all duration-300 ease-out bg-red-500 group-hover:w-full" />
                 <span className="absolute right-0 block w-0 h-1 transition-all duration-300 ease-out bg-red-500 group-hover:left-0 group-hover:w-full" />
