@@ -24,7 +24,7 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="p-4 lg:flex hidden">
-          <Button href="#" text="Contact Us" />
+          <Button href="/booking" text="Contact Us" />
         </div>
 
         <div className="lg:hidden flex">Humurger Menu</div>
