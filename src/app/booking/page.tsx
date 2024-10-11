@@ -12,29 +12,30 @@ export default function Booking() {
     return <ConfirmPage />;
   }
 
+  
   const visaType = [
-    { value: "study", label: "Study Visa" },
-    { value: "tourist", label: "Tourist Visa" },
-    { value: "work", label: "Work Visa" },
-    { value: "immigration", label: "Immigration Visa" },
+    { value: "Study Visa", label: "Study Visa" },
+    { value: "Tourist Visa", label: "Tourist Visa" },
+    { value: "Work Visa", label: "Work Visa" },
+    { value: "Immigration Visa", label: "Immigration Visa" },
   ];
 
   const Countries = [
-    { value: "usa", label: "United States" },
-    { value: "canada", label: "Canada" },
-    { value: "uk", label: "United Kingdom" },
-    { value: "australia", label: "Australia" },
-    { value: "germany", label: "Germany" },
-    { value: "france", label: "France" },
-    { value: "italy", label: "Italy" },
-    { value: "spain", label: "Spain" },
-    { value: "belgium", label: "Belgium" },
-    { value: "latvia", label: "Latvia" },
-    { value: "lithuania", label: "Lithuania" },
-    { value: "malta", label: "Malta" },
-    { value: "poland", label: "Poland" },
-    { value: "georgia", label: "Georgia" },
-    { value: "cyprus", label: "Cyprus" },
+    { value: "USA", label: "United States" },
+    { value: "Canada", label: "Canada" },
+    { value: "Uk", label: "United Kingdom" },
+    { value: "Australia", label: "Australia" },
+    { value: "Germany", label: "Germany" },
+    { value: "France", label: "France" },
+    { value: "Italy", label: "Italy" },
+    { value: "Spain", label: "Spain" },
+    { value: "Belgium", label: "Belgium" },
+    { value: "Latvia", label: "Latvia" },
+    { value: "Lithuania", label: "Lithuania" },
+    { value: "Malta", label: "Malta" },
+    { value: "Poland", label: "Poland" },
+    { value: "Georgia", label: "Georgia" },
+    { value: "Cyprus", label: "Cyprus" },
   ];
 
   return (
@@ -59,38 +60,31 @@ export default function Booking() {
             onSubmit={handleSubmit}
             className="grid sm:grid-cols-2 grid-cols-1 gap-x-8 gap-y-5 my-6"
           >
-            <TextInput id="name" name="name" label="Full Name" placeholder="" />
-            <ValidationError prefix="Name" field="name" errors={state.errors} />
+            <TextInput id="Name" name="Name" label="Full Name" placeholder="" />
 
             <TextInput
-              id="email"
-              name="email"
+              id="Email"
+              name="Email"
               label="Email Address"
               placeholder=""
             />
-            <ValidationError
-              prefix="Email"
-              field="email"
-              errors={state.errors}
-            />
-
             <TextInput
-              id="number"
-              name="number"
+              id="address"
+              name="Address"
+              label="Address"
+              placeholder=""
+            />
+            <TextInput
+              id="Number"
+              name="Number"
               label="Phone Number"
               placeholder=""
             />
-            <ValidationError
-              prefix="Number"
-              field="number"
-              errors={state.errors}
-            />
-
             <div className="">
               <label className="font-semibold text-sm">Select Visa Type</label>
               <select
-                id="visa"
-                name="visa"
+                id="Visa"
+                name="Visa"
                 className="mt-1 cursor-pointer w-full px-4 py-3 border text-gray-200 border-gray-700 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-300 focus:border-transparent transition-colors duration-300"
               >
                 <option value="" disabled>
@@ -102,18 +96,13 @@ export default function Booking() {
                   </option>
                 ))}
               </select>
-              <ValidationError
-                prefix="Visa"
-                field="visa"
-                errors={state.errors}
-              />
             </div>
 
             <div className="">
               <label className="font-semibold text-sm">Select Country</label>
               <select
-                id="country"
-                name="country"
+                id="Country"
+                name="Country"
                 className="mt-1 cursor-pointer w-full px-4 py-3 border text-gray-200 border-gray-700 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-300 focus:border-transparent transition-colors duration-300"
               >
                 <option value="" disabled>
@@ -134,9 +123,10 @@ export default function Booking() {
 
             <div className="flex justify-center lg:col-span-2 mt-4">
               <button
-                className="sm:w-auto w-full relative inline-flex items-center justify-center px-6 py-3 overflow-hidden text-lg font-medium text-red-600 transition duration-300 ease-out border-2 border-red-600 rounded-lg shadow-md group hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
+                className="sm:w-64 w-full relative inline-flex items-center justify-center px-6 py-2 overflow-hidden text-lg font-medium text-red-600 transition duration-300 ease-out border-2 border-red-600 rounded-lg shadow-md group hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
                 type="submit"
                 disabled={state.submitting}
+                onSubmit={handleSubmit}
               >
                 <span className="absolute left-0 block w-0 h-1 transition-all duration-300 ease-out bg-red-500 group-hover:w-full" />
                 <span className="absolute right-0 block w-0 h-1 transition-all duration-300 ease-out bg-red-500 group-hover:left-0 group-hover:w-full" />
