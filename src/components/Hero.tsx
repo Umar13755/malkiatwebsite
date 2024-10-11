@@ -17,7 +17,7 @@ export default function Hero() {
           </p>
         </div>
         <div className="flex justify-center lg:justify-start">
-          <Button type="" href="/booking" text="Book Appointment" />
+          <Button href="/booking" text="Book Appointment" />
         </div>
       </div>
 
