@@ -1,13 +1,11 @@
 import Card from "./ui/Card";
-import { NotebookIcon } from "lucide-react";
 export default function Services() {
   return (
     <>
       <section>
-        <div className="container px-5 py-24 mx-auto">
+        <div className="container  py-24 mx-auto">
           <div className="flex justify-center gap-1 mb-4">
-            <NotebookIcon size={25} className="my-[6px]" color="#ef4444" />
-            <h2 className="heading2 text-3xl">Services</h2>
+            <h2 className="text-3xl font-extrabold text-white text-center mb-12">Services We Offer</h2>
           </div>
           <div className="flex flex-wrap -m-4 justify-center">
             <Card

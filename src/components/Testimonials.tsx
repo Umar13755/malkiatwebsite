@@ -10,14 +10,14 @@ const testimonials = [
     role: "Marketing Director",
     content:
       "This product has revolutionized our workflow. It's intuitive, powerful, and has saved us countless hours.",
-    avatar: "/assets/profile.jpg",
+    avatar: "/assets/profile3.jpg",
   },
   {
     name: "Michael Chen",
     role: "Software Engineer",
     content:
       "I'm impressed by the robust features and the responsive support team. It's been a game-changer for our projects.",
-    avatar: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    avatar: "/assets/profile2.jpg",
   },
   {
     name: "Emily Rodriguez",
@@ -118,12 +118,13 @@ export default function Testimonials() {
             >
               <div className="p-8">
                 <div className="flex items-center mb-4">
-                  <img
+                  <Image
                     className="h-16 w-16 rounded-full object-cover"
                     src={testimonial.avatar}
                     alt={`Avatar of ${testimonial.name}`}
                     width={64}
                     height={64}
+                    quality={95}
                   />
                   <div className="ml-4">
                     <h3 className="text-lg font-medium text-white">

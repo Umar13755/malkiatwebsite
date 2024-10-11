@@ -68,6 +68,11 @@ export default function AnimatedSuccessStories() {
 
   return (
     <div className="relative py-24 overflow-hidden" ref={containerRef}>
+      <div className="absolute top-0 left-0 w-full sm:px-24 px-16 h-full -z-10">
+        <div className="relative w-full h-full">
+          <div className="bg-gradient-to-r from-pink-500 via-purple-400 to-indigo-500 opacity-20 rounded-full h-2/3 sm:h-44 w-full blur-2xl absolute bottom-[80px] "></div>
+        </div>
+      </div>
       <div className="container mx-auto px-4 relative">
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
@@ -83,6 +88,8 @@ export default function AnimatedSuccessStories() {
           initial="hidden"
           animate={controls}
         >
+          {/* Gradient Blob */}
+
           <StatCard end={500} suffix="+" text="Client's Success" />
           <StatCard end={250} suffix="+" text="Work Visa" />
           <StatCard end={300} suffix="+" text="Student Visa" />

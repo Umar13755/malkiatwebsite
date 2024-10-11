@@ -19,6 +19,9 @@ export default function Navbar() {
           <Link href="#" className="link">
             Success Stories
           </Link>
+          <Link href="/booking" className="link">
+            Appointment
+          </Link>
         </div>
         <div className="p-4 lg:flex hidden">
           <Button href="#" text="Contact Us" />
