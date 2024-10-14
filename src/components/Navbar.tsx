@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./ui/Button";
-import { AlignCenter } from "lucide-react";
+import { AlignCenter, X } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,46 +13,96 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  const MobileMenu = () => {
-    return (
-      <div className="absolute top-16 left-0 right-0 w-full py-20 bg-opacity-10 backdrop-blur-lg bg-[#ededed] z-50 text-white flex flex-col justify-center items-center space-y-6">
-        <nav className="flex flex-col items-center space-y-6">
-          <a
-            href="#"
-            className="text-lg font-semibold  hover:text-blue-600 transition duration-300"
-          >
-            Services
-          </a>
-          <a
-            href="#"
-            className="text-lg font-semibold  hover:text-blue-600 transition duration-300"
-          >
-            About Us
-          </a>
-          <a
-            href="#"
-            className="text-lg font-semibold  hover:text-blue-600 transition duration-300"
-          >
-            Success Stories
-          </a>
-          <a
-            href="/contact"
-            className="text-lg font-semibold  hover:text-blue-600 transition duration-300"
-          >
-            Contact Us
-          </a>
-        </nav>
+  // Close the menu when clicking outside of it
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isOpen && (event.target as HTMLElement).closest(".mobile-menu") === null) {
+        setIsOpen(false);
+      }
+    };
 
-        <button className="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300">
-          Book Appointment
-        </button>
-      </div>
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const navVariants = {
+    hidden: { opacity: 0, x: "-100vw" },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring", stiffness: 120, damping: 20 },
+    },
+  };
+
+  const linkVariants = {
+    hidden: { opacity: 0, x: "-100vw" },
+    visible: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        duration: 0.5,
+      },
+    }),
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, x: "-100vw" },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: 0.2, // delay after the links have animated
+        type: "spring",
+        stiffness: 80,
+        damping: 12,
+      },
+    },
+  };
+
+  const MobileMenu: React.FC = () => {
+    const navItems: string[] = [
+      "Services",
+      "About Us",
+      "Success Stories",
+      "Contact Us",
+    ];
+    return (
+      <motion.div
+      className="absolute top-16 left-0 right-0 w-full px-6 py-10 bg-opacity-10 backdrop-blur-lg bg-[#ededed] z-50 text-white flex flex-col justify-center items-center space-y-6 mobile-menu"
+      initial="hidden"
+      animate="visible"
+      variants={navVariants}
+    >
+      <motion.nav className="flex flex-col items-center space-y-6">
+        {navItems.map((label, index) => (
+          <motion.a
+            key={label}
+            href={label === "Contact Us" ? "/contact" : "#"}
+            className="link text-lg text-slate-200"
+            custom={index}
+            variants={linkVariants}
+          >
+            {label}
+          </motion.a>
+        ))}
+        <motion.div variants={buttonVariants}>
+          <Button href="/booking" text="Contact Us" />
+        </motion.div>
+      </motion.nav>
+    </motion.div>
+    
     );
   };
 
   return (
     <div>
-      <nav className="flex flex-row z-0 justify-between items-center ">
+      <nav className="flex flex-row z-0 justify-between items-center">
         <img className="w-24 h-auto" src="/assets/logo.png" alt="logo" />
 
         <div className="gap-7 lg:flex hidden items-center">
@@ -74,8 +125,10 @@ export default function Navbar() {
         </div>
 
         <div className="lg:hidden flex" onClick={handleMenu}>
-          {isOpen ? <MobileMenu /> : <AlignCenter />}
+          {isOpen ? <X className="cursor-pointer" /> : <AlignCenter className="cursor-pointer" />}
         </div>
+
+        {isOpen && <MobileMenu />}
       </nav>
     </div>
   );

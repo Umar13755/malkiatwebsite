@@ -3,11 +3,11 @@ export default function Services() {
   return (
     <>
       <section>
-        <div className="container  py-24 mx-auto">
+        <div className="container py-24 mx-auto">
           <div className="flex justify-center gap-1 mb-4">
             <h2 className="text-3xl font-extrabold text-white text-center mb-12">Services We Offer</h2>
           </div>
-          <div className="flex flex-wrap -m-4 justify-center">
+          <div className="lg:flex lg:flex-wrap flex-wrap -m-4 justify-center md:grid md:grid-cols-2">
             <Card
               title="Work Permits"
               description="We are currently dealing with UK, Canada, Germany, Lativa, Litheunia, & other European Countries."
